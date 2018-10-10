@@ -1,0 +1,2 @@
+#play with this in order to study Variable expansion
+eval "$(ssh-agent -s)" # eval "$(<name of command or variable to expand)"
