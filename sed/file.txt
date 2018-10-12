@@ -1,0 +1,17 @@
+This is a sample text string which is going to be used.
+
+This is one more string that can be used.
+
+This is the start of another example that is going to span across the next four lines.
+
+This example is still going and it has to do something about the work index.
+
+i n d e x.
+
+This example changes the worded index. until it sees the word end. The word ubove... index ...index... I don't know.
+
+index index
+
+Finally, this is the last string in the test set.
+
+The line that is going to use ^ is this one.

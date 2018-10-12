@@ -1,0 +1,5 @@
+awk -F: '/Thor/{print "Missile" $1 "  has a range of " $5 " miles"}' missiles.txt
+awk -F: /Thor/{print Missile  has a range of   miles} missiles.txt
+awk -F: '$5 > 12000 { print $1 }' missiles.txt
+awk -F: '{ printf %15s %3.2fn, $1, $4/$5}' missiles.txt
+awk 'BEGIN {FS=:} {wt += $3} END {print wt}' missiles.txt

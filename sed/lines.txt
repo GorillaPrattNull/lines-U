@@ -1,0 +1,7 @@
+sed "s/is/IS/g' file.txt  # simple search string
+sed -e 's/is/IS/g' -e 's/IS/is/g' file.txt  #how to add different transformation
+sed '5s/this/that/g' file.txt #Just do this on the 5th line. 
+sed '1,5s/this/that/' file.txt #run the search op on the first 5 lines. $ for end of file. 
+sed '5,$!s/this/that/' file.txt #run the search op all but the 5 line to the end of file.
+sed '/^The/s/this/that/' file.txt #Do the search line based upon a pattern.
+sed '/start/,/end/s/index/idx/g' file.txt

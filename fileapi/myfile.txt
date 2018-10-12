@@ -1,0 +1,3 @@
+0 1.500000 8.400000 First-object
+1 9.200000 7.400000 Second-object
+2 4.100000 5.600000 Final-object

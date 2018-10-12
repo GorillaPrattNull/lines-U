@@ -1,0 +1,34 @@
+
+appexp : main.o app.o bar.o lib.o
+	gcc -o appexp main.o app.o bar.o lib.o
+
+
+main.o : src/main.c src/lib.h src/app.h
+	gcc -c -o main.o src/main.c
+
+app.o : src/app.c src/lib.h src/app.h
+	gcc -c -o app.o src/app.c
+
+bar.o : src/bar.c src/lib.h
+	gcc -c -o bar.o src/bar.c
+
+lib.o : src/lib.c src/lib.h
+	gcc -c -o lib.o src/lib.c
+SRC_VAR="My test string for variable manipulation."
+TEST1_VAR=$(subst for,foo,$\{SRC_VAR\})
+TEST2_VAR=$(patsubst t%t,T%T, $\{SRC_VAR\})
+TEST3_VAR=$(filter %ing %able, $\{SRC_VAR\})
+TEST4_VAR=$(sort $\{SRC_VAR\})
+TEST5_VAR=$(words $\{SRC_VAR\})
+TEST6_VAR=$(word 2,$\{SRC_VAR\})
+TEST7_VAR=$(wordlist 2, 3, $\{SRC_VAR\})
+
+	all :
+@echo original str: $\{SRC_VAR\}
+@echo substitution: $\{TEST1_VAR\}
+@echo pattern sub : $\{TEST2_VAR\}
+@echo filter : $\{TEST3_VAR\}
+@echo sort : $\{TEST4_VAR\}
+@echo word count : $\{TEST5_VAR\}
+@echo word 2 : $\{TEST6_VAR\}
+@echo word 2 thru 4: $\{TEST7_VAR\}
