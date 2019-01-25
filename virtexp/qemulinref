@@ -1,0 +1,17 @@
+qemu-system-x86_64 -m 1G,maxmem=1G -drive format=raw,file=Fedora-AtomicHost-29-20181025.1.x86_64.raw,index=0,media=disk -netdev user,id=et1,ipv4=on,ipv6=off,net=192.168.131.0,host=192.168.131.130
+
+qemu-system-x86_64 -m 1G,maxmem=1G -drive format=raw,file=Fedora-AtomicHost-29-20181025.1.x86_64.raw,index=0,media=disk -nic tap -netdev user,id=net2,hostfwd=tcp::5555-:22
+
+qemu-system-x86_64 -m 1G,maxmem=1G -drive format=raw,file=/root/Downloads/Fedora-AtomicHost-29-20181025.1.x86_64-2.raw,index=0,media=disk -nic tap -netdev tap,id=net3,script=/etc/qemu-ifup2 -cdrom /root/AtomicMaking/init.iso
+
+[root@localhost ~]# qemu-system-x86_64 -m 1G,maxmem=1G -drive format=raw,file=/root/Downloads/Fedora-AtomicHost-29-20181025.1.x86_64-2.raw,index=0,media=disk -netdev tap,id=net3,ifname=tap2 -device e1000,netdev=net3 -netdev bridge,id=b1,br=virbr0 -device virtio-net,netdev=b1 -cdrom /root/AtomicMaking/init.iso
+
+[root@localhost ~]# qemu-system-x86_64 -m 1G,maxmem=1G -drive format=raw,file=/root/Downloads/Fedora-AtomicHost-29-20181025.1.x86_64.raw,index=0,media=disk -netdev tap,id=net2,ifname=tap1 -device e1000,netdev=net2 -netdev bridge,id=b1,br=virbr0 -device virtio-net,netdev=b1 -cdrom /root/AtomicMaking/init.iso
+good so far?
+tap1
+
+genisoimage -output init.iso -volid cidata -joliet -rock user-data meta-data
+
+qemu-system-x86_64 -m 1G,maxmem=1G -cdrom init.iso -drive format=raw,file=Fedora-AtomicHost-29-20190107.0.x86_64.raw,index=0,media=disk -netdev tap,id=net3,ifname=tap0 -device e1000,netdev=net3 -netdev bridge,id=b1,br=virbr0 -device virtio-net,netdev=b1
+genisoimage -output init.iso -volid cidata -joliet -rock user-data meta-data
+genisoimage -output init.iso -volid cidata -joliet -rock user-data meta-data
