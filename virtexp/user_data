@@ -1,4 +1,2 @@
-#cloud-config
-password: atomic
-ssh_pwauth: True
-chpasswd: { expire: False }
+instance-id: i-atomic01
+local-hostname: alikyi.cloud1
